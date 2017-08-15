@@ -1,0 +1,23 @@
+@import './color.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100%;
+  background: $eb;
+  a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  ul,
+  li {
+    list-style: none;
+  }
+}
