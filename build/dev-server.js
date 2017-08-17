@@ -33,15 +33,15 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
   heartbeat: 2000
 })
 // force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', function (compilation) {
-  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+compiler.plugin('compilation', function(compilation) {
+  compilation.plugin('html-webpack-plugin-after-emit', function(data, cb) {
     hotMiddleware.publish({ action: 'reload' })
     cb()
   })
 })
 
 // proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
+Object.keys(proxyTable).forEach(function(context) {
   var options = proxyTable[context]
   if (typeof options === 'string') {
     options = { target: options }
@@ -57,7 +57,18 @@ app.use(devMiddleware)
 
 // enable hot-reload and state-preserving
 // compilation error display
-app.use(hotMiddleware)
+app.use(hotMiddleware);
+
+//配置json读取
+var appData = require('../src/menu.json');
+var apiRoutes = express.Router();
+apiRoutes.get('/menu', function(req, res) {
+  res.json({
+    errno: 0,
+    data: appData
+  });
+});
+app.use('/api', apiRoutes);
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)

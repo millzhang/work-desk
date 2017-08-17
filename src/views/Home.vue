@@ -1,16 +1,20 @@
 <template>
   <div class="container">
     <div class="list">
-      <router-link class="wrap" to="/canvas/wave">
-        <h1>Sample Box</h1>
-        <img src="">
-        <p></p>
-      </router-link>
+      <template v-for="item in list">
+        <router-link class="wrap" :to="item.path">
+          <h1>{{item.title}}</h1>
+          <div class="image">
+            <img :src="item.img">
+          </div>
+          <p>{{item.desc}}</p>
+        </router-link>
+      </template>
     </div>
   </div>
 </template>
 <script>
-import axios from ''
+import axios from 'axios'
 export default {
   name: 'hello',
   data() {
@@ -24,8 +28,10 @@ export default {
   },
   methods: {
     fetchMenuList() {
-      axios.get('~assets/js/menu.json').then(result => {
-        console.log(result)
+      axios.get('/api/menu').then(result => {
+        if (result.status == 200) {
+          this.list = result.data.data;
+        }
       })
     }
   }

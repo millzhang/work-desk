@@ -4,11 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import Service from '@/service/service.js'
 import 'assets/styles/common.scss'
 
 Vue.config.productionTip = false;
-Vue.prototype.service = Service;
 
 
 router.beforeEach((to, from, next) => {
