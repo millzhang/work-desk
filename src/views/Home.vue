@@ -22,9 +22,7 @@ export default {
       defaultImage: 'http://g.hiphotos.baidu.com/image/pic/item/b3fb43166d224f4a1687bf6603f790529822d1ad.jpg'
     }
   },
-  created() {
-    // this.fetchMenuList();
-  },
+  created() {},
   methods: {
 
   }
