@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <p-header :title="name"></p-header>
     <section class="content">
       <div class="canvas">
         <canvas id="canvas" width="200" height="200"></canvas>
@@ -10,16 +9,12 @@
 </template>
 <script>
 import CanvasWave from 'assets/js/canvas/canvas-wave'
-import pHeader from '../Header.vue'
 export default {
   name: '',
   data() {
     return {
       name: 'canvas实现波浪效果'
     }
-  },
-  components: {
-    pHeader
   },
   mounted() {
     new CanvasWave('canvas');
@@ -30,6 +25,8 @@ export default {
 <style lang="scss" scoped>
 .container {
   text-align: center;
+  width: 100%;
+  height: 100%;
   .canvas {
     position: relative;
     top: 50%;

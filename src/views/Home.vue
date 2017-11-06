@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="app-home">
     <div class="list">
-      <template v-for="item in $router.options.routes">
-        <router-link class="wrap" :to="item.path" v-if="item.path != '/'">
+      <template v-for="item in routes">
+        <router-link class="wrap" :to="item.path == '' ? item.children[0].path : item.path" v-if="!item.root">
           <h1>{{item.name}}</h1>
           <div class="image">
             <img :src="item.meta.cover == undefined ? defaultImage:item.meta.cover">
@@ -14,12 +14,13 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+import image from '@/assets/images/fd7b4d586db805f1e919d918fdf8c4a5.jpg'
 export default {
   name: 'hello',
   data() {
     return {
-      defaultImage: 'http://g.hiphotos.baidu.com/image/pic/item/b3fb43166d224f4a1687bf6603f790529822d1ad.jpg'
+      defaultImage: image,
+      routes: this.$router.options.routes
     }
   },
   created() {},

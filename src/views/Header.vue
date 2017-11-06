@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <header class="header">
-      <router-link to="/" class="back"></router-link>
-      <h1 class="mb">{{title}}</h1>
-    </header>
-  </div>
+  <header class="header">
+    <router-link to="/" class="back"></router-link>
+    <h1 class="mb">{{title}}</h1>
+  </header>
 </template>
 <script>
 export default {
@@ -36,6 +34,8 @@ export default {
   padding: 0 30px;
   justify-content: center;
   background: rgba(0, 0, 0, 0.8);
+  user-select: none;
+  z-index: 200;
   .back {
     width: 30px;
     height: 30px;
@@ -44,6 +44,7 @@ export default {
     transform: rotate(-45deg);
     display: block;
     margin-right: auto;
+    cursor: pointer;
   }
   h1 {
     width: 100%;
@@ -83,6 +84,17 @@ export default {
     -webkit-backface-visibility: hidden;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

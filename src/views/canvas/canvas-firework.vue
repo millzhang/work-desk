@@ -1,6 +1,5 @@
 <template>
   <section class="container">
-    <p-header :title="name"></p-header>
   </section>
 </template>
 <script>

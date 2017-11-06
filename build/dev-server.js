@@ -60,15 +60,15 @@ app.use(devMiddleware)
 app.use(hotMiddleware);
 
 //配置json读取
-var appData = require('../src/menu.json');
-var apiRoutes = express.Router();
-apiRoutes.get('/menu', function(req, res) {
-  res.json({
-    errno: 0,
-    data: appData
-  });
-});
-app.use('/api', apiRoutes);
+// var appData = require('../src/menu.json');
+// var apiRoutes = express.Router();
+// apiRoutes.get('/menu', function(req, res) {
+//   res.json({
+//     errno: 0,
+//     data: appData
+//   });
+// });
+// app.use('/api', apiRoutes);
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)

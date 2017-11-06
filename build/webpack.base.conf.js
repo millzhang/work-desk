@@ -1,6 +1,7 @@
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
+const webpack = require('webpack')
 var vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve(dir) {
@@ -15,8 +16,7 @@ module.exports = {
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production' ?
-      config.build.assetsPublicPath :
-      config.dev.assetsPublicPath
+      config.build.assetsPublicPath : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -24,7 +24,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       'views': resolve('src/views'),
-      'assets': resolve('src/assets')
+      'assets': resolve('src/assets'),
+      snapsvg: 'snapsvg/dist/snap.svg.js',
     }
   },
   module: {
@@ -61,6 +62,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: require.resolve('snapsvg/dist/snap.svg.js'),
+        use: 'imports-loader?this=>window,fix=>module.exports=0',
       }
     ]
   }

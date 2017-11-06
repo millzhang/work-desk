@@ -5,19 +5,10 @@ import App from './App'
 import router from './router'
 
 import 'assets/styles/common.scss'
+import 'animate.css'
 
 Vue.config.productionTip = false;
 
-
-router.beforeEach((to, from, next) => {
-  next();
-});
-
-router.afterEach(transition => {
-  if (transition.name) {
-    document.title = transition.name;
-  }
-});
 
 /* eslint-disable no-new */
 new Vue({

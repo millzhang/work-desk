@@ -48,9 +48,6 @@ body {
     list-style: none;
   }
   .container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     box-sizing: border-box;
   }
   .content {
@@ -60,3 +57,10 @@ body {
     top: 10%;
   }
 }
+
+
+.slide-left-enter-active {
+  animation: fadeIn .5s;
+}
+
+.slide-right-enter-active {}
